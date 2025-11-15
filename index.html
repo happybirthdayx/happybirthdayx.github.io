@@ -173,6 +173,155 @@
       50% { text-shadow: 0 0 20px rgba(255,107,157,0.8), 0 0 30px rgba(255,107,157,0.5); }
     }
 
+    /* Birthday cake styles */
+    .cake {
+      position: relative;
+      width: 350px;
+      height: 200px;
+      margin-top: 200px;
+    }
+
+    .cake-layer {
+      width: 350px;
+      height: 100px;
+      background: linear-gradient(to bottom, #8B4513 0%, #654321 100%);
+      border-radius: 20px;
+      position: relative;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+    }
+
+    .cake-layer::before {
+      content: '';
+      position: absolute;
+      top: -45px;
+      left: 22px;
+      right: 22px;
+      height: 65px;
+      background: linear-gradient(to bottom, #FFB6C1 0%, #FF69B4 100%);
+      border-radius: 40px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    }
+
+    /* Golden frosting decoration */
+    .cake-layer::after {
+      content: '';
+      position: absolute;
+      top: -38px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 93%;
+      height: 10px;
+      background: linear-gradient(to right, #FFD700, #FFA500, #FFD700, #FFA500, #FFD700);
+      border-radius: 5px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Strawberry decorations */
+    .strawberry {
+      position: absolute;
+      font-size: 28px;
+      animation: decorationFloat 2s ease-in-out infinite;
+      filter: drop-shadow(0 3px 4px rgba(0,0,0,0.25));
+    }
+
+    .strawberry:nth-child(1) { top: -35px; left: 35px; animation-delay: 0s; }
+    .strawberry:nth-child(2) { top: -35px; left: 90px; animation-delay: 0.3s; }
+    .strawberry:nth-child(3) { top: -35px; left: 145px; animation-delay: 0.6s; }
+    .strawberry:nth-child(4) { top: -35px; left: 200px; animation-delay: 0.9s; }
+    .strawberry:nth-child(5) { top: -35px; left: 255px; animation-delay: 1.2s; }
+    .strawberry:nth-child(6) { top: -35px; left: 305px; animation-delay: 1.5s; }
+
+    @keyframes decorationFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-4px) rotate(5deg); }
+    }
+
+    /* Chocolate drips */
+    .drip {
+      position: absolute;
+      width: 18px;
+      height: 30px;
+      background: linear-gradient(to bottom, #5C4033, #3D2817);
+      border-radius: 0 0 9px 9px;
+      top: -50px;
+    }
+
+    .drip:nth-child(7) { left: 30px; height: 35px; }
+    .drip:nth-child(8) { left: 85px; height: 26px; }
+    .drip:nth-child(9) { left: 140px; height: 33px; }
+    .drip:nth-child(10) { left: 195px; height: 28px; }
+    .drip:nth-child(11) { left: 250px; height: 32px; }
+    .drip:nth-child(12) { left: 305px; height: 27px; }
+
+    .candle {
+      position: absolute;
+      width: 16px;
+      height: 75px;
+      background: linear-gradient(to bottom, #FFA500 0%, #FF8C00 100%);
+      border-radius: 8px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.35);
+    }
+
+    /* Spiral pattern on candles */
+    .candle::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 0;
+      right: 0;
+      bottom: 12px;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 6px,
+        rgba(255,255,255,0.25) 6px,
+        rgba(255,255,255,0.25) 8px
+      );
+      border-radius: 8px;
+    }
+
+    .candle::before {
+      content: '';
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 20px;
+      background: radial-gradient(circle, #FFD700 0%, #FFA500 40%, #FF4500 100%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      box-shadow: 0 0 20px rgba(255,165,0,0.95), 
+                  0 0 35px rgba(255,69,0,0.6),
+                  0 0 45px rgba(255,0,0,0.35);
+      animation: flameFlicker 0.3s ease-in-out infinite alternate;
+    }
+
+    .candle.blown::before {
+      display: none;
+    }
+
+    @keyframes flameFlicker {
+      0% { transform: translateX(-50%) scale(1) rotate(-3deg); }
+      100% { transform: translateX(-50%) scale(1.18) rotate(3deg); }
+    }
+
+    .blow-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: all 0.3s ease;
+      margin-bottom: 100px;
+      font-size: 1.4rem;
+      padding: 1.2rem 3rem;
+    }
+
+    .blow-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 35px rgba(102,126,234,0.55);
+    }
+
+    .blow-btn:active {
+      transform: scale(0.95);
+    }
+
     /* Shine effect on card */
     .shine-effect {
       position: relative;
@@ -200,6 +349,16 @@
       0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
       100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
     }
+
+    /* Smooth transitions */
+    #message {
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    #cakeSection > div {
+      transition: transform 0.6s ease;
+    }
+    
   </style>
 </head>
 
@@ -220,7 +379,6 @@
     <!-- Hộp quà -->
     <div id="giftBox" class="gift-box float-animation">
       <div class="relative">
-        <!-- Gift box illustration using emoji/text -->
         <div class="text-center">
           <div class="text-9xl mb-4">🎁</div>
           <div class="bg-white/90 backdrop-blur-sm rounded-2xl px-8 py-4 shadow-2xl">
@@ -245,7 +403,7 @@
           <div class="w-full md:w-3/5 p-8 md:p-12 custom-scroll overflow-y-auto">
             <div class="mb-6">
               <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 glow-text mb-4 text-center md:text-left">
-              Happy Birthday
+                Happy Birthday
               </h1>
               <div class="h-1 w-32 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full mx-auto md:mx-0"></div>
             </div>
@@ -259,9 +417,9 @@
               <span class="text-2xl animate-bounce" style="animation-delay: 0.4s;">🌸</span>
               <span class="text-2xl animate-bounce" style="animation-delay: 0.6s;">🌸</span>
               <span class="text-2xl animate-bounce" style="animation-delay: 0.8s;">🌸</span>
-              <span class="text-2xl animate-bounce" style="animation-delay: 0.10s;">🌸</span>
-              <span class="text-2xl animate-bounce" style="animation-delay: 0.12s;">🌸</span>
-              <span class="text-2xl animate-bounce" style="animation-delay: 0.14s;">🌸</span>
+              <span class="text-2xl animate-bounce" style="animation-delay: 1s;">🌸</span>
+              <span class="text-2xl animate-bounce" style="animation-delay: 1.2s;">🌸</span>
+              <span class="text-2xl animate-bounce" style="animation-delay: 1.4s;">🌸</span>
             </div>
           </div>
 
@@ -285,6 +443,50 @@
     </div>
   </div>
 
+  <!-- Birthday Cake Section (Center of screen) -->
+  <div id="cakeSection" class="hidden fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
+    <div class="pointer-events-auto flex flex-col items-center ">
+      <div class="cake">
+        <div class="cake-layer">
+          <!-- Strawberry decorations -->
+          <div class="strawberry">🍓</div>
+          <div class="strawberry">🍓</div>
+          <div class="strawberry">🍓</div>
+          <div class="strawberry">🍓</div>
+          <div class="strawberry">🍓</div>
+          <div class="strawberry">🍓</div>
+          
+          <!-- Chocolate drips -->
+          <div class="drip"></div>
+          <div class="drip"></div>
+          <div class="drip"></div>
+          <div class="drip"></div>
+          <div class="drip"></div>
+          <div class="drip"></div>
+          
+          <!-- Candles -->
+          <div class="candle" style="top: -100px; left: 50px;"></div>
+          <div class="candle" style="top: -100px; left: 110px;"></div>
+          <div class="candle" style="top: -100px; left: 170px;"></div>
+          <div class="candle" style="top: -100px; left: 230px;"></div>
+          <div class="candle" style="top: -100px; left: 285px;"></div>
+        </div>
+      </div>
+      
+      <!-- Blow Candles Button -->
+      <button 
+        id="blowBtn" 
+        class="blow-btn text-white font-bold rounded-full shadow-2xl flex items-center"
+      >
+        Thổi nến đi má
+      </button>
+      
+      <p id="wishMessage" class="hidden text-2xl text-white drop-shadow-2xl animate-pulse mt-6 text-center px-8">
+        Chúc mừng Chi đủ tuổi đi tù nhé, có gì t hứa sẽ là người báo công an đầu tiên ദ്ദി(˵ •̀ ᴗ - ˵ ) ✧
+      </p>
+    </div>
+  </div>
+
   <!-- Audio element -->
   <audio id="birthdayMusic" loop>
     <source src="music1.mp4" type="audio/mpeg">
@@ -298,8 +500,8 @@
     const confettiContainer = document.getElementById('confettiContainer');
 
     const texts = [
-      "Chúc Chi bean thêm một tuổi mới, thêm bạn mới, thêm thành tích, thêm chuyện vui bớt chuyện buồn nhưng mà phải nhớ kể cho pạn nhé",
-      "Chúc Chi đi đường nhặt được zàng, đi học nhặt được ny cao ráo đẹp trai mà phải tốt",
+      "Chúc Chi bean thêm một tuổi mới, thêm bạn mới, thêm thành tích, thêm chuyện vui bớt chuyện buồn nhưng mà phải nhớ kể cho pạn nhé.",
+      "Chúc Chi đi đường nhặt được zàng, đi học nhặt được ny cao ráo đẹp trai mà phải tốt nghe chưa.",
       "Mong rằng tuổi mới thì cuộc đời sẽ đối xử tốt với Chi hơn, sống chill hơn, ít phải suy nghĩ hơn và ít mụn hơn:))"
     ];
 
@@ -373,8 +575,84 @@
         }
       } else {
         element.classList.remove('typing-cursor');
+        
+        // Wait 5 seconds then hide message card and show cake in center
+        setTimeout(() => {
+          // Hide the entire message card
+          message.style.opacity = '0';
+          message.style.transform = 'scale(0.9)';
+          
+          setTimeout(() => {
+            message.style.display = 'none';
+            
+            // Show cake in center with fade in effect
+            const cakeSection = document.getElementById('cakeSection');
+            cakeSection.classList.remove('hidden');
+            cakeSection.style.opacity = '0';
+            cakeSection.querySelector('div').style.transform = 'scale(0.7)';
+            
+            setTimeout(() => {
+              cakeSection.style.opacity = '1';
+              cakeSection.querySelector('div').style.transform = 'scale(1)';
+              
+              // Create confetti when cake appears
+              createConfetti();
+              createConfetti();
+            }, 50);
+          }, 600);
+        }, 5000);
       }
     }
+
+    // Blow candles functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const blowBtn = document.getElementById('blowBtn');
+      const wishMessage = document.getElementById('wishMessage');
+      
+      blowBtn.addEventListener('click', function() {
+        const candles = document.querySelectorAll('.candle');
+        
+        // Blow out candles one by one
+        candles.forEach((candle, index) => {
+          setTimeout(() => {
+            candle.classList.add('blown');
+            
+            // Create smoke effect
+            const smoke = document.createElement('div');
+            smoke.style.position = 'absolute';
+            smoke.style.left = candle.style.left;
+            smoke.style.top = '-110px';
+            smoke.style.fontSize = '24px';
+            smoke.textContent = '💨';
+            smoke.style.animation = 'smokeRise 1.2s ease-out forwards';
+            candle.parentElement.appendChild(smoke);
+            
+            setTimeout(() => smoke.remove(), 1200);
+          }, index * 250);
+        });
+        
+        // Show wish message
+        setTimeout(() => {
+          wishMessage.classList.remove('hidden');
+          blowBtn.style.display = 'none';
+          
+          // Create extra confetti
+          createConfetti();
+          createConfetti();
+          createConfetti();
+        }, 1500);
+      });
+    });
+
+    // Add smoke animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes smokeRise {
+        0% { opacity: 1; transform: translateY(0) scale(1); }
+        100% { opacity: 0; transform: translateY(-40px) scale(1.8); }
+      }
+    `;
+    document.head.appendChild(style);
 
     // Add sparkle effects continuously
     setInterval(() => {
